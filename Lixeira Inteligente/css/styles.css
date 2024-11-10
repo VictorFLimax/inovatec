@@ -55,13 +55,12 @@ body {
 
 /* ---------- MENU ---------- */
 
-nav.menu-lateral{
-  width: 80px;
+nav.menu-lateral {
+  width: 80px; /* Largura inicial */
   height: 100%;
   background-color: #252525;
   padding: 40px 0 40px 1%;
   box-shadow: 3px 0 0 #4e4c4d;
-
   position: fixed;
   top: 0;
   left: 0;
@@ -69,8 +68,8 @@ nav.menu-lateral{
   transition: .5s;
 }
 
-nav.menu-lateral.expandir{
-  width: 250px;
+nav.menu-lateral.expandir {
+  width: 250px; /* Largura quando o menu estiver expandido */
 }
 
 .btn-expandir{
@@ -146,22 +145,27 @@ ul li.item-menu a .icon > i{
 }
 
 .main-cards {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  gap: 20px;
-  margin: 20px 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: center; /* Centraliza os itens quando o menu estiver fechado */
+  align-items: center;
+  gap: 40px;
+  flex-wrap: wrap; /* Permite que os cartões quebrem para a próxima linha se necessário */
+  transition: all 0.3s ease; /* Animação suave ao mudar o layout */
 }
 
 .card {
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: space-between;
   padding: 25px;
-  background-color:  #424242;
+  background-color: #424242;
   box-sizing: border-box;
   border: 1px solid #000000;
   border-radius: 5px;
   box-shadow: 0 6px 7px -4px rgba(0, 0, 0, 0.2);
+  flex: 1 1 200px;
+  max-width: 250px;
 }
 
 .card:first-child {
@@ -187,6 +191,8 @@ ul li.item-menu a .icon > i{
   justify-content: space-between; /* Alinha os gráficos lado a lado */
   gap: 10px; /* Ajuste para reduzir o espaço entre os gráficos */
   flex-wrap: wrap;
+  transition: all 0.5s ease; /* Transição suave */
+  margin-left: 80px; /* Espaço para o menu fechado */
 }
 
 .charts-card {
@@ -196,8 +202,15 @@ ul li.item-menu a .icon > i{
   padding: 20px;
   width: 100%;
   max-width: 48%; /* Ajusta a largura dos gráficos para diminuir o espaço */
+  transition: width 0.5s ease; /* Transição suave ao ajustar a largura */
+}
+nav.menu-lateral.expandir + .main-container .charts {
+  margin-left: 250px; /* Aumenta o espaço à esquerda quando o menu estiver expandido */
 }
 
+nav.menu-lateral.expandir + .main-container .charts-card {
+  max-width: 45%; /* Ajusta os gráficos para caber no espaço disponível */
+}
 .chart-title {
   font-size: 18px;
   font-weight: bold;
